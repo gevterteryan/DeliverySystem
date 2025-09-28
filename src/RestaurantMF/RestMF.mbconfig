@@ -1,0 +1,81 @@
+﻿{
+  "TrainingTime": 120,
+  "Scenario": "Recommendation",
+  "DataSource": {
+    "Type": "SQL",
+    "Version": 1,
+    "ColumnProperties": [
+      {
+        "ColumnName": "UserID",
+        "ColumnPurpose": "User",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 1
+      },
+      {
+        "ColumnName": "RestID",
+        "ColumnPurpose": "Item",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 1
+      },
+      {
+        "ColumnName": "Rate",
+        "ColumnPurpose": "Label",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 1
+      }
+    ],
+    "ConnectionString": "Data Source=SQL8001.site4now.net;Initial Catalog=db_a84c02_deliverysystem;Persist Security Info=True;User ID=db_a84c02_deliverysystem_admin",
+    "CommandString": "SELECT CAST(UserID as REAL), CAST(RestID as REAL), CAST(Rate as REAL) FROM [dbo].[UsersRating]",
+    "DatabaseName": "db_a84c02_deliverysystem",
+    "SelectedTableDbo": "dbo",
+    "TableName": "UsersRating"
+  },
+  "Environment": {
+    "Type": "LocalCPU",
+    "Version": 1
+  },
+  "RunHistory": {
+    "Version": 0,
+    "Type": "Result",
+    "Trials": [
+      {
+        "Version": 0,
+        "Type": "Trial",
+        "TrainerName": "MatrixFactorization",
+        "Score": -12.2431,
+        "RuntimeInSeconds": 19.3
+      },
+      {
+        "Version": 0,
+        "Type": "Trial",
+        "TrainerName": "MatrixFactorization",
+        "Score": -22.4874,
+        "RuntimeInSeconds": 18.1
+      },
+      {
+        "Version": 0,
+        "Type": "Trial",
+        "TrainerName": "MatrixFactorization",
+        "Score": -11.2699,
+        "RuntimeInSeconds": 19.3
+      },
+      {
+        "Version": 0,
+        "Type": "Trial",
+        "TrainerName": "MatrixFactorization",
+        "Score": -23.8415,
+        "RuntimeInSeconds": 44.5
+      }
+    ],
+    "Pipeline": "[{\"EstimatorType\":\"MapValueToKey\",\"Inputs\":[\"UserID\"],\"Outputs\":[\"UserID\"]},{\"EstimatorType\":\"MapValueToKey\",\"Inputs\":[\"RestID\"],\"Outputs\":[\"RestID\"]},{\"LabelColumnName\":\"Rate\",\"MatrixColumnIndexColumnName\":\"UserID\",\"MatrixRowIndexColumnName\":\"RestID\",\"ApproximationRank\":\"64\",\"LearningRate\":\"0.1\",\"NumberOfIterations\":\"40\",\"EstimatorType\":\"MatrixFactorization\",\"Inputs\":[\"Features\"],\"Outputs\":[\"Score\"]}]",
+    "MetricName": "RSquared"
+  },
+  "Type": "TrainingConfig",
+  "Version": 1
+}

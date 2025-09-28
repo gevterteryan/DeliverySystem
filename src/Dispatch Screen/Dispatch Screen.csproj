@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <RootNamespace>Dispatch_Screen</RootNamespace>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Static Files\DeliveryIcon.png" />
+    <None Remove="Static Files\Driver.png" />
+    <None Remove="Static Files\icon.png" />
+    <None Remove="Static Files\LoginLogo.jpg" />
+    <None Remove="Static Files\PhoneIcon.png" />
+    <None Remove="Static Files\refresh.png" />
+    <None Remove="Static Files\undo.png" />
+    <None Remove="Static Files\UserIcon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.ObjectModel" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Data Access\Data Access.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Static Files\DeliveryIcon.png" />
+    <Resource Include="Static Files\Driver.png" />
+    <Resource Include="Static Files\icon.png" />
+    <Resource Include="Static Files\LoginLogo.jpg" />
+    <Resource Include="Static Files\PhoneIcon.png" />
+    <Resource Include="Static Files\refresh.png" />
+    <Resource Include="Static Files\undo.png" />
+    <Resource Include="Static Files\UserIcon.png" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,23 @@
+﻿create table Orders(
+	ID int identity(1,1)		not null,
+	UserID int					not null,
+	RestaurantID int			not null,
+	Driver int					null,
+	TotalPrice money			not null,
+	DeliveryPrice money			    null constraint DeliveryPrice_DF default 0,
+	OrderAddress nvarchar(35)   not null,
+	PriorityCode int			    null constraint PriorityCode_DF default -1,
+	PhoneNumber nvarchar(15)	not null,
+	OrderStart datetime2		not null constraint OrderStart_DF default sysdatetime(),
+	Place    datetime2			null,
+	Pickup   datetime2			null,
+	Assign   datetime2			null,
+	Arrive   datetime2			null,
+	Depart   datetime2			null,
+	Complete datetime2			null,
+	Rating   decimal(2,2)       null,
+    constraint OrdersID_PR_KEY primary key (ID),
+	constraint OrdersUserID_FR_KEY foreign key (UserID) references Users(ID),
+	constraint OrdersRestID_FR_KEY foreign key (RestaurantID) references Restaurant(ID),
+	constraint OrdersDriver_FR_KET foreign key (Driver) references Drivers(ID)
+)
